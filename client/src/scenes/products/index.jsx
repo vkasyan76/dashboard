@@ -70,10 +70,14 @@ const Product = ({
           <Typography>id: {_id}</Typography>
           <Typography>Supply Left: {supply}</Typography>
           <Typography>
-            Yearly Sales This Year: {stat.yearlySalesTotal}
+            {/* Yearly Sales This Year: {stat[0].yearlySalesTotal} */}
+            {/* Yearly Sales This Year: $
+            {Number(stat[0].yearlySalesTotal.toFixed(2))} */}
+            Yearly Sales This Year: $
+            {stat[0].yearlySalesTotal.toFixed(2).toLocaleString()}
           </Typography>
           <Typography>
-            Yearly Units Sold This Year: {stat.yearlyTotalSoldUnits}
+            Yearly Units Sold This Year: {stat[0].yearlyTotalSoldUnits}
           </Typography>
         </CardContent>
       </Collapse>
@@ -83,7 +87,7 @@ const Product = ({
 
 const Products = () => {
   const { data, isLoading } = useGetProductsQuery()
-  // console.log('data', data)
+  console.log('data', data)
   const isNonMobile = useMediaQuery('(min-width: 1000px)')
   return (
     <Box m="1.5rem 2.5rem">
