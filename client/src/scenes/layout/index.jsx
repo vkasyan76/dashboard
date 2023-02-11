@@ -11,9 +11,9 @@ const Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
   const userId = useSelector((state) => state.global.userId)
   const { data } = useGetUserQuery(userId)
-  console.log('data', data)
+  // console.log('data', data)
   // console.log(
-  //   `getUser URL: ${process.env.REACT_APP_BASE_URL}/General/user/${userId}`,
+  //   `getUser URL: ${process.env.REACT_APP_BASE_URL}/general/user/${userId}`,
   // )
 
   return (
