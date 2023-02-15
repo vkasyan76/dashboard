@@ -14,7 +14,13 @@ import salesRoutes from './routes/sales.js'
 import User from './models/User.js'
 import Product from './models/Product.js'
 import ProductStat from './models/ProductStat.js'
-import { dataUser, dataProduct, dataProductStat } from './data/index.js'
+import Transaction from './models/Transaction.js'
+import {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+} from './data/index.js'
 
 /* CONFIGURATION */
 dotenv.config()
@@ -45,9 +51,25 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
 
+    // generate a unique _id value for each document before inserting it into the collection.
+    const dataWithUniqueIds = dataTransaction.map((d) => {
+      return {
+        ...d,
+        _id: new mongoose.Types.ObjectId(),
+      }
+    })
+
     // add the data: ONLY ADD THE DATA ONE TIME
     // User.insertMany(dataUser)
     // Product.insertMany(dataProduct)
     // ProductStat.insertMany(dataProductStat)
+    // Transaction.insertMany(dataTransaction)  replaced with to have  a unique _id value for each document before inserting it into the collection.:
+    // Transaction.insertMany(dataWithUniqueIds, (error, docs) => {
+    //   if (error) {
+    //     console.error(error)
+    //   } else {
+    //     console.log(`Inserted ${docs.length} documents into the collection`)
+    //   }
+    // })
   })
   .catch((error) => console.log(`${error} did not connect`))
