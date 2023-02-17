@@ -72,8 +72,17 @@ export const getTransactions = async (req, res) => {
       .sort(sortFormatted)
       .skip(page * pageSize)
       .limit(pageSize)
+    // const total = await Transaction.countDocuments({
+    //   // name: { $regex: search, $options: 'i' },
+    //   userId: { $regex: search, $options: 'i' },
+    // })
+
+    // ChatGPT: You should modify the search criteria to use a valid field that exists in the schema. In your case, you could modify the search criteria to use the userId or cost fields instead of name:
     const total = await Transaction.countDocuments({
-      name: { $regex: search, $options: 'i' },
+      $or: [
+        { userId: { $regex: search, $options: 'i' } },
+        { cost: { $regex: search, $options: 'i' } },
+      ],
     })
 
     // console.log('Code made it past try-catch block')
