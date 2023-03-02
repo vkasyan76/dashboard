@@ -44,7 +44,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
 
   if (!data || isLoading) return 'Loading....'
 
-  console.log(totalSalesLine)
+  // console.log(totalSalesLine)
 
   return (
     <ResponsiveLine
