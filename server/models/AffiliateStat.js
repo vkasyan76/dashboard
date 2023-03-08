@@ -8,5 +8,5 @@ const AffiliateStatSchema = new mongoose.Schema({
     },
 }, { timestamps: true }, )
 
-const AffilaiteStat = mongoose.model('Affiliate', AffiliateStatSchema)
+const AffilaiteStat = mongoose.model('AffiliateStat', AffiliateStatSchema)
 export default AffilaiteStat
